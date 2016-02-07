@@ -66,4 +66,8 @@ angular.module('picTalk', ['ionic'])
     );
     console.log($scope.messages);
   };
+
+  $scope.picOnTouch = function() {
+    console.log("touched");
+  }
 });
