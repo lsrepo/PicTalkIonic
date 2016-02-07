@@ -28,7 +28,8 @@ angular.module('picTalk', ['ionic'])
 .controller('SelectCtrl', function($scope, $ionicModal) {
   // No need for testing data anymore
   $scope.messages = [];
-
+  $scope.allPics = picInJson;
+  $scope.currentCategory = "Core";
   $scope.pics = picInJson;
 
   // Create and load the Modal
@@ -54,12 +55,15 @@ angular.module('picTalk', ['ionic'])
   };
 
   // Close the new pic modal
-  $scope.closeNewPic = function() {
+  $scope.closeMessage = function() {
     $scope.picModal.hide();
   };
 
+
+
   $scope.picOnTap = function(tappedPic) {
-    console.log("yoyo" + tappedPic.id);
+    console.log($scope.picTouched);
+    //console.log("yoyo" + tappedPic.id);
     tappedPic.selected = true;
     $scope.messages.push(
       tappedPic
@@ -69,5 +73,17 @@ angular.module('picTalk', ['ionic'])
 
   $scope.picOnTouch = function() {
     console.log("touched");
-  }
-});
+  };
+
+  $scope.selectCategory = function(selectedCategory) {
+    console.log(selectedCategory);
+    var currentPics = [];
+    $scope.currentCategory = selectedCategory;
+    for (var a = 0; a < $scope.allPics.length; a++) {
+      if ($scope.allPics[a].category == $scope.currentCategory)
+        currentPics.push($scope.allPics[a]);
+    }
+    $scope.pics = currentPics;
+  };
+
+})

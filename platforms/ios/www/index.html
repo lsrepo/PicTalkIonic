@@ -27,59 +27,58 @@
 </head>
 
 <body ng-app="picTalk" ng-controller="SelectCtrl" class="platform-ios platform-cordova platform-webview">
+  <ion-nav-view>
 
+  </ion-nav-view>
 
   <ion-side-menus>
 
     <!-- Center content -->
     <ion-side-menu-content>
-
-
       <ion-header-bar class="bar-calm">
-
-
-
         <h1 class="title">PicTalk </h1>
         <!-- New Pic button-->
         <button class="button button-icon" ng-click="newPic()">
           <i class="icon ion-arrow-expand"></i>
         </button>
-
-
       </ion-header-bar>
-
-
-
 
       <!-- our list and list items -->
       <ion-content>
         <!-- categories horizontal scroll -->
         <div class="row">
-          <ion-scroll direction="x" class="available-scroller" style="width: 100%;">
-            <div class="button-bar">
-              <!-- Core -->
-              <a class="button ion-ionic button button-calm  button-clear "></a>
-              <!-- Health -->
-              <a class="button ion-medkit button-assertive "></a>
-              <!-- Feelings -->
-              <a class="button ion-android-happy button-energized"></a>
-              <!-- Food -->
-              <a class="button ion-fork button button-balanced"></a>
-              <!-- Shopping -->
-              <a class="button ion-bag button-royal"></a>
-              <!-- Transportation -->
-              <a class="button ion-android-bus button-positive"></a>
-            </div>
-          </ion-scroll>
+          <div class="col">
+            <ion-scroll direction="x" class="available-scroller" style="width: 100%;">
+              <div class="button-bar">
+                <!-- Core -->
+                <a class="button ion-ionic button button-calm  button-clear "></a>
+                <!-- Health -->
+                <a class="button ion-medkit button-assertive "></a>
+                <!-- Feelings -->
+                <a class="button ion-android-happy button-energized"></a>
+                <!-- Food -->
+                <a class="button ion-fork button button-balanced"></a>
+                <!-- Shopping -->
+                <a class="button ion-bag button-royal"></a>
+                <!-- Transportation -->
+                <a class="button ion-android-bus button-positive"></a>
+              </div>
+            </ion-scroll>
+          </div>
         </div>
 
+
+
+        <ion-item collection-repeat="pic in pics" item-width="160px" item-height="180px" on-tap="picOnTap(pic)" on-touch="picOnTouch()">
+          <img ng-src="img/pics/{{pic.file}}" class="full-image">
+          <div class="center caption">
+            {{pic.swedish}}
+          </div>
+        </ion-item>
+
         <div class="row">
-          <ion-item collection-repeat="pic in pics" item-width="160px" item-height="180px" on-tap="picOnTap(pic)" on-touch="picOnTouch()">
-            <img ng-src="img/pics/{{pic.file}}" class="full-image">
-            <div class="center caption">
-              {{pic.swedish}}
-            </div>
-          </ion-item>
+          <div class="col">
+          </div>
         </div>
 
       </ion-content>
@@ -131,6 +130,9 @@
     </div>
 
   </script>
+
+
+
 </body>
 
 </html>

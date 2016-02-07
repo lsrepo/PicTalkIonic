@@ -23,6 +23,65 @@ angular.module('picTalk', ['ionic'])
   });
 })
 
+// Router
+.config(function($stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise('/')
+
+  $stateProvider.state('home', {
+    url: '/home',
+    views: {
+      home: {
+        templateUrl: 'home.html'
+      }
+    }
+  })
+
+  $stateProvider.state('help', {
+    url: '/help',
+    views: {
+      help: {
+        templateUrl: 'help.html'
+      }
+    }
+  })
+
+  $stateProvider.state('app.todos', {
+    abstract: true,
+    url: '/todos',
+    views: {
+      todos: {
+        template: '<ion-nav-view></ion-nav-view>'
+      }
+    }
+  })
+
+  $stateProvider.state('app.todos.index', {
+    url: '',
+    templateUrl: 'todos.html',
+    controller: 'TodosCtrl'
+  })
+
+  $stateProvider.state('app.todos.detail', {
+    url: '/:todo',
+    templateUrl: 'todo.html',
+    controller: 'TodoCtrl'
+  })
+
+
+})
+
+.controller('TodosCtrl', function($scope) {
+  $scope.todos = [{
+    title: "Take out the trash",
+    done: true
+  }, {
+    title: "Do laundry",
+    done: false
+  }, {
+    title: "Start cooking dinner",
+    done: false
+  }]
+})
 
 
 .controller('SelectCtrl', function($scope, $ionicModal) {

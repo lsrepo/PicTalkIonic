@@ -27,29 +27,21 @@
 </head>
 
 <body ng-app="picTalk" ng-controller="SelectCtrl">
-  
+  <ion-nav-view>
+
+  </ion-nav-view>
 
   <ion-side-menus>
 
     <!-- Center content -->
     <ion-side-menu-content>
-
-
       <ion-header-bar class="bar-calm">
-
-
-
         <h1 class="title">PicTalk </h1>
         <!-- New Pic button-->
         <button class="button button-icon" ng-click="newPic()">
           <i class="icon ion-arrow-expand"></i>
         </button>
-
-
       </ion-header-bar>
-
-
-
 
       <!-- our list and list items -->
       <ion-content>
@@ -59,17 +51,17 @@
             <ion-scroll direction="x" class="available-scroller" style="width: 100%;">
               <div class="button-bar">
                 <!-- Core -->
-                <a class="button ion-ionic button button-calm  button-clear "></a>
+                <a class="button ion-ionic button button-calm" ng-click="selectCategory(&apos;Core&apos;)"></a>
                 <!-- Health -->
-                <a class="button ion-medkit button-assertive "></a>
+                <a class="button ion-medkit button-assertive" ng-click="selectCategory(&apos;Health&apos;)"></a>
                 <!-- Feelings -->
-                <a class="button ion-android-happy button-energized"></a>
+                <a class="button ion-android-happy button-energized" ng-click="selectCategory(&apos;Feelings&apos;)"></a>
                 <!-- Food -->
-                <a class="button ion-fork button button-balanced"></a>
+                <a class="button ion-fork button button-balanced" ng-click="selectCategory(&apos;Food&apos;)"></a>
                 <!-- Shopping -->
-                <a class="button ion-bag button-royal"></a>
+                <a class="button ion-bag button-royal" ng-click="selectCategory(&apos;Shopping&apos;)"></a>
                 <!-- Transportation -->
-                <a class="button ion-android-bus button-positive"></a>
+                <a class="button ion-android-bus button-positive" ng-click="selectCategory(&apos;Transportation&apos;)"></a>
               </div>
             </ion-scroll>
           </div>
@@ -77,12 +69,12 @@
 
 
 
-          <ion-item collection-repeat="pic in pics" item-width="160px" item-height="180px" on-tap="picOnTap(pic)" on-touch="picOnTouch()">
-            <img ng-src="img/pics/{{pic.file}}" class="full-image">
-            <div class="center caption">
-              {{pic.swedish}}
-            </div>
-          </ion-item>
+        <ion-item collection-repeat="pic in pics" item-width="160px" item-height="180px" on-tap="picOnTap(pic)">
+          <img ng-src="img/pics/{{pic.file}}" class="full-image">
+          <div class="center caption" ng-style="myStyle" ng-click="$scope.picTouched= 2">
+            {{pic.swedish }}
+          </div>
+        </ion-item>
 
         <div class="row">
           <div class="col">
@@ -107,16 +99,18 @@
       <!-- Modal header bar -->
       <ion-header-bar class="bar-secondary">
         <h1 class="title">Message</h1>
-        <button class="button button-icon" ng-click="closeNewPic()">
+        <button class="button button-icon" ng-click="closeMessage()">
           <i class="icon ion-arrow-shrink"></i>
         </button>
       </ion-header-bar>
 
       <!-- Modal content area -->
 
+      <!-- If i fill in item-height, only one picture will show in message -->
+      <!-- If i use ng-repeat, cannot accept duplicates -->
 
       <ion-content>
-        <ion-item collection-repeat="message in messages">
+        <ion-item collection-repeat="message in messages" item-width="100%">
           <div class="row">
             <div class="col">
               <img ng-src="img/pics/{{message.file}}" width="170px" height="170px">
@@ -138,6 +132,9 @@
     </div>
 
   </script>
+
+
+
 </body>
 
 </html>

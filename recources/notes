@@ -1,0 +1,10 @@
+//Local Storage
+
+https://scotch.io/tutorials/create-your-first-mobile-app-with-angularjs-and-ionic
+
+//Feel native
+http://scottbolinger.com/4-ways-to-make-your-ionic-app-feel-native/
+
+
+//Ionic Technical stuff
+One caveat to collection-repeat is that the elements are rendered using absolute positioning so using it with the ionic grid system or flexbox will not work.

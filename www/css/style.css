@@ -47,3 +47,7 @@
   padding-bottom: 28px;
   text-align: right;
 }
+
+.picTouched{
+  opacity:0.5;
+}
